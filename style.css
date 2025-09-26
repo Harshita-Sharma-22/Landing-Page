@@ -78,20 +78,28 @@ body {
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 4rem 2rem;
+  position: relative;
+  height: 120vh;
+  padding: 2rem;
   gap: 2rem;
   align-items: start;
+  overflow: hidden;
 }
 
 .hero-text {
   display: grid;
-  justify-items: center;
+  justify-items: start;
   padding-top: 2rem;
-  align-items: start; 
+  align-items: center; 
+  padding-left: 8rem;
+  max-width: 500px;
+  gap: 1rem;
 }
 
 .hero-text h2 {
   font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.2; 
+  margin-bottom: 0.5rem;
 }
 .hero-text .italic {
   font-style: italic;
@@ -103,8 +111,9 @@ body {
   -webkit-text-fill-color: transparent;
 }
 .hero-text p {
-  margin: 1rem 0 2rem;
+  margin: 0;
   max-width: 500px;
+  line-height: 1.5;
 }
 
 .btn-light:hover {
@@ -112,19 +121,26 @@ body {
   color: #f9f3ee; 
 }
 
+.hero .btn-dark {
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center; /* scale from center */
+  z-index: 10;
+  transition: transform 0.15s ease; /* smoother */
+}
 
 .btn-dark {
   background: var(--panel-dark);
-  margin-top: 1rem;
   color: #fff;
   padding: 0.8rem 2rem;
   border: none;
   border-radius: 999px;
   cursor: pointer;
-  transition: transform 0.2s ease;
 }
 .btn-dark:hover {
-  transform: scale(1.1);
+  transform: translate(-50%, -50%) scale(1.05);
 }
 .hero-img {
   position: relative;
@@ -132,13 +148,16 @@ body {
   place-items: center;
 }
 .hero-img .hand {
-  max-width: 80%;
+  max-width: 90%;
   z-index: 1;
+  position: relative;
+  top: -5%;
+  transform: rotate(15deg);
 }
 .hero-img .rock {
   position: absolute;
-  top: 10%;
-  right: 60%;
+  top: 2%;
+  right: 50%;
   width: var(--rock-width);
   filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
   z-index: 2;
@@ -146,9 +165,9 @@ body {
 
 .hero-img .barcode {
   position: absolute;
-  bottom: 10%; 
-  right: 30%;  
-  z-index: 2;  
+  bottom: 15%; 
+  right: 36%;  
+  z-index: 3;  
 }
 
 .hero-img .barcode img {
