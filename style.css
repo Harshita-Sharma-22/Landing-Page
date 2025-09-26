@@ -178,16 +178,17 @@ body {
 /* New Cards Section below hero text */
 .cards-section {
   display: grid;
-  justify-items: start; /* left align the cards */
+  justify-items: start; 
   padding: 0 2rem;
-  margin-top: -20rem; /* space from hero text */
+  margin-top: -20rem; 
 }
 
 /* Cards container */
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem; /* smaller spacing between cards */
+  gap: 2.5rem; 
+  margin-left: 4rem;
 }
 
 /* Individual Card */
@@ -201,6 +202,14 @@ body {
   width: 200px; /* small card width */
 }
 
+.card .price {
+  background: #fff;       /* white strip */
+  color: var(--panel-dark);
+  font-weight: bold;
+  padding: 0.6rem 0;
+  border-radius:1rem 1rem; /* rounded corners at bottom */
+}
+
 .card:hover {
   transform: translateY(-6px) scale(1.03);
   box-shadow: 0 8px 20px rgba(0,0,0,0.25);
@@ -210,6 +219,13 @@ body {
   width: 70px;
   height: auto;
   margin-bottom: 0.8rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.card:hover img {
+  transform: translateY(-4px);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
 }
 
 .card h4 {
@@ -229,32 +245,6 @@ body {
   color: var(--muted);
   font-size: 0.95rem;
 }
-
-/* Responsive for smaller screens */
-@media (max-width: 768px) {
-  .cards {
-    grid-template-columns: 1fr; /* stack cards vertically */
-    justify-items: center;
-  }
-}
-
-
-
-@media (max-width: 768px) {
-  .cards-barcode {
-    grid-template-columns: 1fr; /* stack cards + barcode */
-    justify-items: center;
-  }
-  .cards {
-    grid-template-columns: 1fr; /* single column cards */
-  }
-  .cards-barcode .barcode {
-    margin-top: 1.5rem;
-    place-items: center; /* center barcode on mobile */
-  }
-}
-
-
 
 
 /* Footer */
@@ -289,27 +279,51 @@ body {
 }
 
 
-
-/* Responsive tweaks */
-/* Smaller screens: stack content and scale rock proportionally */
 @media (max-width: 768px) {
   .hero {
+    display: grid;
     grid-template-columns: 1fr;
+    justify-items: center;
     text-align: center;
+    padding: 2rem 1rem;
+    gap: 2rem;
+    height: auto;
   }
-  .hero-img .rock {
-    width: calc(var(--rock-width) * 0.95);
-    top: 10%;
-    right: 60%;
+
+  .hero-text {
+    justify-items: center;
+    padding: 0;
+    max-width: 90%;
+    z-index: 2;
   }
+
+
+  .hero-img .rock{
+    width: 20%;
+  }
+
+  .hero-img .hand{
+    width: 50%;
+  }
+
+  .hero-img .barcode{
+    width: 40%;
+
+  }
+  /* Cards below hero */
+  .cards-section {
+    margin-top: 0.2rem;
+    justify-items: center;
+    padding: 0 1rem;
+  }
+
   .cards {
-    grid-template-columns: 1fr;
-  }
-  .footer {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-columns: 1fr; 
+    justify-items: center;
   }
 }
+
+
 
 /* Optional: helper utility to quickly set rock width via CSS variable in a specific breakpoint or class
    Example: <div class="hero rock-small"> ... </div>  with:
